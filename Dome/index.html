@@ -4,13 +4,21 @@
 <meta charset="UTF-8">
 <title>Wedding Invitation</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- GOOGLE FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
 
-  <!-- IMAGE (SECRET TRIGGER) -->
+  <!-- TOP FLORAL -->
+  <div class="top-decoration">❦</div>
+
+  <!-- IMAGE -->
   <img src="../Assets/image/p-e.jpeg"
        alt="Wedding Picture"
        class="centered-image"
@@ -23,17 +31,23 @@
   </div>
 
   <h1 id="site-title">Wedding Invitation</h1>
+
   <div class="decorative-line"></div>
 
   <h2 id="couple-names">Mr & Mrs EmmanueDome</h2>
+
   <div class="decorative-line small"></div>
 
   <p id="date"><strong>Date:</strong> Sunday, 24 May 2026</p>
   <p id="time"><strong>Time:</strong> 18:00 PM</p>
   <p id="venue"><strong>Venue:</strong> Mwenge Social Hall, Dar es Salaam</p>
 
-  <a id="view-venue" href="https://maps.google.com/?q=Mwenge+Social+Hall" target="_blank">
-    📍 View Venue Location
+  <a id="view-venue"
+     href="https://maps.google.com/?q=Mwenge+Social+Hall"
+     target="_blank">
+
+     📍 View Venue Location
+
   </a>
 
   <p class="invite-text" id="invite-text">
@@ -42,7 +56,10 @@
 
   <!-- COUNTDOWN -->
   <div class="countdown-container">
-    <h3 id="countdown-title">Countdown to Our Wedding</h3>
+
+    <h3 id="countdown-title">
+      Countdown to Our Wedding
+    </h3>
 
     <div id="countdown">
 
@@ -67,41 +84,65 @@
       </div>
 
     </div>
+
   </div>
 
   <!-- RSVP -->
   <div class="rsvp-section">
 
     <h3 id="rsvp-title">RSVP</h3>
-    <p id="rsvp-subtitle">Please confirm your attendance</p>
+
+    <p id="rsvp-subtitle">
+      Please confirm your attendance
+    </p>
 
     <form onsubmit="sendRSVP(event)">
-      <input type="text" id="guestName" placeholder="Your Full Name" required>
 
+      <input type="text"
+             id="guestName"
+             placeholder="Your Full Name"
+             required>
 
-     <label id="q-attend" class="question">
-  Will you attend our wedding?
-</label>
+      <label id="q-attend" class="question">
+        Will you attend our wedding?
+      </label>
 
-<div class="attendance-options">
+      <div class="attendance-options">
 
-  <label class="option-card">
+        <label class="option-card">
 
-        <label>
-          <input type="radio" name="attendance" value="Will attend" required>
-          <span id="opt-yes">Yes, I will attend</span>
+          <input type="radio"
+                 name="attendance"
+                 value="Will attend"
+                 required>
+
+          <span id="opt-yes">
+            Yes, I will attend
+          </span>
+
         </label>
 
-        <label>
-          <input type="radio" name="attendance" value="Will not attend">
-          <span id="opt-no">Sorry, I can’t attend</span>
+        <label class="option-card">
+
+          <input type="radio"
+                 name="attendance"
+                 value="Will not attend">
+
+          <span id="opt-no">
+            Sorry, I can’t attend
+          </span>
+
         </label>
 
       </div>
 
-      <input type="number" id="guests" placeholder="Number of guests" min="1">
+      <input type="number"
+             id="guests"
+             placeholder="Number of guests"
+             min="1">
 
-      <textarea id="message" placeholder="Optional message"></textarea>
+      <textarea id="message"
+                placeholder="Optional message"></textarea>
 
       <button type="submit" id="send-btn">
         Send RSVP via WhatsApp
@@ -113,10 +154,7 @@
 
   <!-- RECEPTIONIST BUTTON -->
   <button id="receptionBtn"
-          style="display:none;margin-top:25px;
-                 background:#2f6f4e;color:white;
-                 padding:15px;border-radius:30px;
-                 border:none;font-weight:bold;"
+          style="display:none;"
           onclick="confirmEntry()">
 
     ✅ Confirm Guest Entry
@@ -125,12 +163,11 @@
 
 </div>
 
-
 <script>
 
 /* ================= COUNTDOWN ================= */
 
-const weddingDate = new Date("March 1, 2026 18:00:00").getTime();
+const weddingDate = new Date("May 24, 2026 18:00:00").getTime();
 
 const daysEl = document.getElementById("days");
 const hoursEl = document.getElementById("hours");
@@ -158,7 +195,6 @@ setInterval(() => {
 
 }, 1000);
 
-
 /* ================= LANGUAGE ================= */
 
 function setLang(lang){
@@ -182,15 +218,14 @@ function setLang(lang){
 
     document.getElementById("opt-no").innerText =
       "Samahani, sitaweza";
-    
-    guestName.placeholder = "Jina Kamili";
 
+    guestName.placeholder = "Jina Kamili";
 
     document.getElementById("guests").placeholder =
       "Idadi ya wageni";
 
     document.getElementById("message").placeholder =
-      "Ujumbe (hiari)";
+      "Ujumbe (Hiari)";
 
     document.getElementById("send-btn").innerText =
       "Tuma RSVP WhatsApp";
@@ -200,18 +235,26 @@ function setLang(lang){
     location.reload();
 
   }
-}
 
+}
 
 /* ================= RSVP ================= */
 
 function sendRSVP(e){
+
   e.preventDefault();
 
-  const name = document.getElementById("guestName").value.trim();
-  const attend = document.querySelector('input[name="attendance"]:checked').value;
-  const g = guests.value || "Not specified";
-  const m = message.value || "-";
+  const name =
+    document.getElementById("guestName").value.trim();
+
+  const attend =
+    document.querySelector('input[name="attendance"]:checked').value;
+
+  const g =
+    guests.value || "Not specified";
+
+  const m =
+    message.value || "-";
 
   if(name === ""){
     alert("Please enter your name");
@@ -228,16 +271,18 @@ Message: ${m}`;
     `https://wa.me/255783532235?text=${encodeURIComponent(txt)}`,
     "_blank"
   );
-}
 
+}
 
 /* ================= RECEPTION MODE ================= */
 
 let pressTimer;
 
-const img = document.getElementById("secretImage");
-const btn = document.getElementById("receptionBtn");
+const img =
+  document.getElementById("secretImage");
 
+const btn =
+  document.getElementById("receptionBtn");
 
 img.addEventListener("touchstart", startPress);
 img.addEventListener("mousedown", startPress);
@@ -246,12 +291,12 @@ img.addEventListener("touchend", cancelPress);
 img.addEventListener("mouseup", cancelPress);
 img.addEventListener("mouseleave", cancelPress);
 
-
 function startPress(){
 
   pressTimer = setTimeout(()=>{
 
-    const pin = prompt("Enter Reception PIN:");
+    const pin =
+      prompt("Enter Reception PIN:");
 
     if(pin === "1999"){
 
@@ -273,16 +318,16 @@ function cancelPress(){
   clearTimeout(pressTimer);
 }
 
-
 /* ================= CONFIRM ENTRY ================= */
 
 function confirmEntry(){
 
-  const time = new Date().toLocaleTimeString();
+  const time =
+    new Date().toLocaleTimeString();
 
   const msg =
 `GUEST CHECK-IN ✅
-Couple: Mr & Mrs Adroph
+Couple: Mr & Mrs EmmanueDome
 Time: ${time}
 Status: Allowed Entry`;
 
