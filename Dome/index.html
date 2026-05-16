@@ -241,25 +241,23 @@ function setLang(lang){
 /* ================= RSVP ================= */
 
 function sendRSVP(e){
-
   e.preventDefault();
 
-  const name =
-    document.getElementById("guestName").value.trim();
+  fetch("http://127.0.0.1:8000/wishes", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: document.getElementById("guestName").value,
+      attendance: document.querySelector('input[name="attendance"]:checked').value,
+      guests: document.getElementById("guests").value,
+      message: document.getElementById("message").value
+    })
+  });
 
-  const attend =
-    document.querySelector('input[name="attendance"]:checked').value;
-
-  const g =
-    guests.value || "Not specified";
-
-  const m =
-    message.value || "-";
-
-  if(name === ""){
-    alert("Please enter your name");
-    return;
-  }
+  alert("Wish sent ❤️");
+}}
 
   const txt = `WEDDING RSVP 💍
 Name: ${name}
