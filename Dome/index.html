@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Wedding Invitation</title>
+<title>Wedding Wishes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- GOOGLE FONTS -->
@@ -15,8 +15,21 @@
 
 <div class="container">
 
-  <!-- TOP FLORAL -->
+  <!-- TOP DECORATION -->
   <div class="top-decoration">❦</div>
+
+  <!-- WEDDING TITLE -->
+  <h1 id="main-title" style="font-family:'Great Vibes', cursive; text-align:center; font-size:40px; margin-top:10px;">
+    Welcome to the Celebration of Love
+  </h1>
+
+  <h2 id="couple-title" style="text-align:center; font-family:'Playfair Display'; font-weight:600;">
+    Victor ❤️ Laurencia Wedding
+  </h2>
+
+  <p style="text-align:center; font-style:italic; margin-bottom:20px;">
+    "Two hearts, one journey, forever begins here"
+  </p>
 
   <!-- IMAGE -->
   <img src="../Assets/image/p-e.jpeg"
@@ -30,136 +43,77 @@
     <button type="button" onclick="setLang('sw')">Swahili</button>
   </div>
 
-  <h1 id="site-title">Wedding Invitation</h1>
+  <!-- WEDDING DETAILS -->
+  <div style="text-align:center; margin-top:20px;">
+    <p><strong>Date:</strong> Sunday, 24 May 2026</p>
+    <p><strong>Time:</strong> 18:00 PM</p>
+    <p><strong>Venue:</strong> Mwenge Social Hall, Dar es Salaam</p>
 
-  <div class="decorative-line"></div>
+    <a href="https://maps.google.com/?q=Mwenge+Social+Hall" target="_blank">
+      📍 View Venue Location
+    </a>
+  </div>
 
-  <h2 id="couple-names">Mr & Mrs Mwaisanila</h2>
-
-  <div class="decorative-line small"></div>
-
-  <p id="date"><strong>Date:</strong> Sunday, 24 May 2026</p>
-  <p id="time"><strong>Time:</strong> 18:00 PM</p>
-  <p id="venue"><strong>Venue:</strong> Mwenge Social Hall, Dar es Salaam</p>
-
-  <a id="view-venue"
-     href="https://maps.google.com/?q=Mwenge+Social+Hall"
-     target="_blank">
-
-     📍 View Venue Location
-
-  </a>
-
-  <p class="invite-text" id="invite-text">
-    Kindly join us to celebrate our special day
+  <p class="invite-text" id="invite-text" style="text-align:center; margin-top:15px;">
+    We warmly invite you to share your blessings and heartfelt wishes for our special day.
   </p>
 
   <!-- COUNTDOWN -->
   <div class="countdown-container">
 
-    <h3 id="countdown-title">
+    <h3 id="countdown-title" style="text-align:center;">
       Countdown to Our Wedding
     </h3>
 
-    <div id="countdown">
+    <div id="countdown" style="display:flex; justify-content:center; gap:10px;">
 
       <div class="countdown-box">
         <span id="days">00</span>
-        <small id="days-text">Days</small>
+        <small>Days</small>
       </div>
 
       <div class="countdown-box">
         <span id="hours">00</span>
-        <small id="hours-text">Hours</small>
+        <small>Hours</small>
       </div>
 
       <div class="countdown-box">
         <span id="minutes">00</span>
-        <small id="minutes-text">Minutes</small>
+        <small>Minutes</small>
       </div>
 
       <div class="countdown-box">
         <span id="seconds">00</span>
-        <small id="seconds-text">Seconds</small>
+        <small>Seconds</small>
       </div>
 
     </div>
 
   </div>
 
-  <!-- RSVP -->
+  <!-- WISHES SECTION -->
   <div class="rsvp-section">
 
-    <h3 id="rsvp-title">RSVP</h3>
+    <h3 style="text-align:center;">Send Your Wedding Wishes 💌</h3>
 
-    <p id="rsvp-subtitle">
-      Please confirm your attendance
-    </p>
-
-    <form onsubmit="sendRSVP(event)">
+    <form onsubmit="sendWish(event)">
 
       <input type="text"
              id="guestName"
              placeholder="Your Full Name"
              required>
 
-      <label id="q-attend" class="question">
-        Will you attend our wedding?
-      </label>
-
-      <div class="attendance-options">
-
-        <label class="option-card">
-
-          <input type="radio"
-                 name="attendance"
-                 value="Will attend"
-                 required>
-
-          <span id="opt-yes">
-            Yes, I will attend
-          </span>
-
-        </label>
-
-        <label class="option-card">
-
-          <input type="radio"
-                 name="attendance"
-                 value="Will not attend">
-
-          <span id="opt-no">
-            Sorry, I can’t attend
-          </span>
-
-        </label>
-
-      </div>
-
-      <input type="number"
-             id="guests"
-             placeholder="Number of guests"
-             min="1">
-
       <textarea id="message"
-                placeholder="Wishes Message"></textarea>
+                placeholder="Write your wedding wishes here..."
+                required></textarea>
 
       <button type="submit" id="send-btn">
-        Send RSVP via WhatsApp
+        Send Wishes via WhatsApp
       </button>
 
     </form>
 
   </div>
-
-  <!-- RECEPTIONIST BUTTON -->
-  <button id="receptionBtn"
-          style="display:none;"
-          onclick="confirmEntry()">
-
-    ✅ Confirm Guest Entry
-
-  </button>
 
 </div>
 
@@ -169,31 +123,48 @@
 
 const weddingDate = new Date("May 24, 2026 18:00:00").getTime();
 
-const daysEl = document.getElementById("days");
-const hoursEl = document.getElementById("hours");
-const minutesEl = document.getElementById("minutes");
-const secondsEl = document.getElementById("seconds");
-
 setInterval(() => {
-
   const now = new Date().getTime();
   const d = weddingDate - now;
 
   if (d <= 0) return;
 
-  daysEl.textContent =
+  document.getElementById("days").textContent =
     Math.floor(d / (1000*60*60*24));
 
-  hoursEl.textContent =
+  document.getElementById("hours").textContent =
     Math.floor((d / (1000*60*60)) % 24);
 
-  minutesEl.textContent =
+  document.getElementById("minutes").textContent =
     Math.floor((d / (1000*60)) % 60);
 
-  secondsEl.textContent =
+  document.getElementById("seconds").textContent =
     Math.floor((d / 1000) % 60);
 
 }, 1000);
+
+/* ================= WISHES SEND ================= */
+
+function sendWish(e){
+  e.preventDefault();
+
+  const name = document.getElementById("guestName").value;
+  const message = document.getElementById("message").value;
+
+  const txt =
+`💍 WEDDING WISH MESSAGE
+From: ${name}
+
+💌 Message:
+${message}
+
+(Shared via Wedding Wishes Page)`;
+
+  window.open(
+    "https://wa.me/255783532235?text=" + encodeURIComponent(txt),
+    "_blank"
+  );
+}
 
 /* ================= LANGUAGE ================= */
 
@@ -201,140 +172,24 @@ function setLang(lang){
 
   if(lang === "sw"){
 
-    document.getElementById("site-title").innerText =
-      "Mwaliko wa Harusi";
+    document.getElementById("main-title").innerText =
+      "Karibu kwenye Sherehe ya ndugu zetu Wapendwa";
 
-    document.getElementById("rsvp-title").innerText =
-      "Thibitisha Hudhurio";
+    document.getElementById("couple-title").innerText =
+      "Harusi ya Victor ❤️ Laurencia";
 
-    document.getElementById("rsvp-subtitle").innerText =
-      "Tafadhali thibitisha uwepo wako";
-
-    document.getElementById("q-attend").innerText =
-      "Je, utahudhuria?";
-
-    document.getElementById("opt-yes").innerText =
-      "Ndio, nitahudhuria";
-
-    document.getElementById("opt-no").innerText =
-      "Samahani, sitaweza";
-
-    guestName.placeholder = "Jina Kamili";
-
-    document.getElementById("guests").placeholder =
-      "Idadi ya wageni";
+    document.getElementById("invite-text").innerText =
+      "Tunakukaribisha kwa moyo wote kutoa baraka zako.";
 
     document.getElementById("message").placeholder =
-      "Neno la Baraka kwa Maharusi";
+      "Andika neno la Baraka kwa Maharusi wetu...";
 
     document.getElementById("send-btn").innerText =
-      "Tuma RSVP WhatsApp";
+      "Tuma Ujumbe wako WhatsApp";
 
   } else {
-
     location.reload();
-
   }
-
-}
-
-/* ================= RSVP ================= */
-
-function sendRSVP(e){
-  e.preventDefault();
-
-  const name = document.getElementById("guestName").value;
-  const attend = document.querySelector('input[name="attendance"]:checked').value;
-  const g = document.getElementById("guests").value || "-";
-  const m = document.getElementById("message").value || "-";
-
-  const txt = `💍 WEDDING WISH
-Name: ${name}
-Attendance: ${attend}
-Guests: ${g}
-Message: ${m}`;
-
-  window.open(
-    `https://wa.me/255783532235?text=${encodeURIComponent(txt)}`,
-    "_blank"
-  );
-}
-
-  const txt = `WEDDING RSVP 💍
-Name: ${name}
-Attendance: ${attend}
-Guests: ${g}
-Message: ${m}`;
-
-  window.open(
-    `https://wa.me/255783532235?text=${encodeURIComponent(txt)}`,
-    "_blank"
-  );
-
-}
-
-/* ================= RECEPTION MODE ================= */
-
-let pressTimer;
-
-const img =
-  document.getElementById("secretImage");
-
-const btn =
-  document.getElementById("receptionBtn");
-
-img.addEventListener("touchstart", startPress);
-img.addEventListener("mousedown", startPress);
-
-img.addEventListener("touchend", cancelPress);
-img.addEventListener("mouseup", cancelPress);
-img.addEventListener("mouseleave", cancelPress);
-
-function startPress(){
-
-  pressTimer = setTimeout(()=>{
-
-    const pin =
-      prompt("Enter Reception PIN:");
-
-    if(pin === "1999"){
-
-      alert("Reception Mode Activated ✅");
-
-      btn.style.display = "block";
-
-    } else {
-
-      alert("Wrong PIN ❌");
-
-    }
-
-  },3000);
-
-}
-
-function cancelPress(){
-  clearTimeout(pressTimer);
-}
-
-/* ================= CONFIRM ENTRY ================= */
-
-function confirmEntry(){
-
-  const time =
-    new Date().toLocaleTimeString();
-
-  const msg =
-`GUEST CHECK-IN ✅
-Couple: Mr & Mrs EmmanueDome
-Time: ${time}
-Status: Allowed Entry`;
-
-  window.open(
-    `https://wa.me/255792800846?text=${encodeURIComponent(msg)}`,
-    "_blank"
-  );
-
 }
 
 </script>
