@@ -45,7 +45,7 @@ body {
   width: 100%;
   max-width: 650px;
 
-  padding: 40px 35px;
+  padding: 42px 35px;
 
   border-radius: 32px;
 
@@ -54,22 +54,51 @@ body {
   box-shadow:
     0 10px 30px rgba(0,0,0,0.08),
     0 20px 60px rgba(0,0,0,0.15);
+
+  animation: fadeUp 0.8s ease;
 }
 
-/* ================= TITLE SECTION ================= */
+/* ================= ANIMATION ================= */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= TITLES ================= */
 
 h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.6rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
   color: var(--chocolate-dark);
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 h2 {
-  font-family: 'Playfair Display';
-  font-size: 2rem;
-  color: var(--mocha-brown);
+  margin-top: 10px;
   margin-bottom: 10px;
+}
+
+/* 💍 ELEGANT COUPLE NAME */
+
+.couple-name-style {
+  display: block;
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.6rem;
+  color: var(--mocha-brown);
+  letter-spacing: 1px;
+  margin-top: 6px;
+}
+
+/* 💌 INVITE SUBTITLE */
+
+.invite-subtitle {
+  font-style: italic;
+  color: #7a5a4c;
+  margin: 10px 0 20px;
+  font-size: 1.05rem;
 }
 
 /* ================= IMAGE ================= */
@@ -82,11 +111,12 @@ h2 {
 
   border-radius: 50%;
 
-  border: 5px solid var(--cream);
+  border: 6px solid var(--cream);
 
   box-shadow: 0 10px 25px var(--shadow-strong);
 
   margin: 15px auto 20px;
+
   display: block;
 
   transition: 0.3s ease;
@@ -102,12 +132,7 @@ p {
   color: var(--mocha-brown);
   font-size: 1.05rem;
   line-height: 1.7;
-}
-
-.invite-text {
-  margin-top: 15px;
-  font-style: italic;
-  color: #7c5d4c;
+  margin: 8px 0;
 }
 
 /* ================= LINKS ================= */
@@ -174,7 +199,7 @@ a:hover {
   font-size: 0.7rem;
 }
 
-/* ================= WISHES FORM ================= */
+/* ================= WISHES SECTION ================= */
 
 .rsvp-section {
   margin-top: 40px;
@@ -191,7 +216,7 @@ a:hover {
 .rsvp-section h3 {
   font-size: 1.6rem;
   color: var(--chocolate-dark);
-  margin-bottom: 15px;
+  margin-bottom: 8px;
 }
 
 /* FORM */
@@ -265,11 +290,11 @@ button:hover {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
-  h2 {
-    font-size: 1.5rem;
+  .couple-name-style {
+    font-size: 2.8rem;
   }
 
   .centered-image {
