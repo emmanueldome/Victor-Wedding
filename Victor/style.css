@@ -1,0 +1,304 @@
+:root {
+
+  --chocolate-dark: #3b1f18;
+  --mocha-brown: #6b4637;
+  --burnt-orange: #d96a1d;
+  --soft-orange: #f08a32;
+  --cream: #f5eedc;
+  --gold: #c9a66b;
+
+  --shadow-soft: rgba(0,0,0,0.12);
+  --shadow-strong: rgba(0,0,0,0.25);
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 25px;
+
+  background:
+    linear-gradient(rgba(28,15,10,0.72), rgba(28,15,10,0.72)),
+    url("../Assets/image/p-e.jpeg");
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* ================= CONTAINER ================= */
+
+.container {
+  background: rgba(255,248,243,0.96);
+
+  width: 100%;
+  max-width: 650px;
+
+  padding: 42px 35px;
+
+  border-radius: 32px;
+
+  text-align: center;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.08),
+    0 20px 60px rgba(0,0,0,0.15);
+}
+
+/* ================= TITLES ================= */
+
+h1 {
+  font-size: 2.2rem;
+  color: var(--chocolate-dark);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin: 10px 0;
+}
+
+/* COUPLE NAME */
+.couple-name-style {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.4rem;
+  color: var(--mocha-brown);
+}
+
+/* ================= IMAGE ================= */
+
+.centered-image {
+  width: 170px;
+  height: 170px;
+
+  object-fit: cover;
+  border-radius: 50%;
+
+  border: 6px solid var(--cream);
+
+  box-shadow: 0 10px 25px var(--shadow-strong);
+
+  margin: 15px auto 20px;
+
+  display: block;
+
+  transition: 0.3s ease;
+}
+
+.centered-image:hover {
+  transform: scale(1.04);
+}
+
+/* ================= LINES ================= */
+
+.decorative-line {
+  width: 80px;
+  height: 3px;
+  margin: 10px auto;
+  background: linear-gradient(to right, var(--gold), var(--burnt-orange));
+}
+
+.decorative-line.small {
+  width: 45px;
+  height: 2px;
+}
+
+/* ================= TEXT ================= */
+
+p {
+  color: var(--mocha-brown);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ================= LINK ================= */
+
+a {
+  display: inline-block;
+  margin-top: 15px;
+
+  padding: 14px 28px;
+  border-radius: 40px;
+
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+
+  background: linear-gradient(135deg, var(--burnt-orange), var(--soft-orange));
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+
+  transition: 0.3s ease;
+}
+
+a:hover {
+  transform: translateY(-3px);
+}
+
+/* ================= COUNTDOWN ================= */
+
+.countdown-container {
+  margin-top: 35px;
+}
+
+#countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.countdown-box {
+  width: 75px;
+  height: 75px;
+
+  border-radius: 18px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, var(--mocha-brown), var(--chocolate-dark));
+
+  color: white;
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.countdown-box span {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.countdown-box small {
+  font-size: 0.7rem;
+}
+
+/* ================= RSVP (WISHES SECTION) ================= */
+
+.rsvp-section {
+  margin-top: 40px;
+
+  padding: 30px;
+
+  border-radius: 22px;
+
+  background: linear-gradient(135deg, #fff9f5, #f8eee7);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.rsvp-section h3 {
+  font-size: 1.6rem;
+  color: var(--chocolate-dark);
+  margin-bottom: 8px;
+}
+
+.rsvp-section p {
+  color: var(--mocha-brown);
+  margin-bottom: 15px;
+}
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input,
+textarea {
+  padding: 14px;
+  border-radius: 14px;
+
+  border: 1px solid #e1cfc1;
+
+  font-size: 1rem;
+
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--burnt-orange);
+  box-shadow: 0 0 0 3px rgba(217,106,29,0.18);
+}
+
+textarea {
+  height: 110px;
+  resize: none;
+}
+
+/* BUTTON */
+button {
+  padding: 15px;
+
+  border: none;
+  border-radius: 40px;
+
+  font-size: 1rem;
+  font-weight: 700;
+
+  color: white;
+
+  cursor: pointer;
+
+  background: linear-gradient(135deg, var(--burnt-orange), var(--soft-orange));
+
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+  transition: 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  background: var(--chocolate-dark);
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width: 520px) {
+
+  body {
+    padding: 15px;
+  }
+
+  .container {
+    padding: 25px 18px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .couple-name-style {
+    font-size: 2.8rem;
+  }
+
+  .centered-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .countdown-box {
+    width: 65px;
+    height: 65px;
+  }
+
+  button,
+  a {
+    width: 100%;
+  }
+}
