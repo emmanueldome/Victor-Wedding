@@ -296,3 +296,49 @@ button:hover {
     width: 100%;
   }
 }
+/* ================= LANGUAGE SWITCH ================= */
+
+.lang-switch {
+
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+
+  margin-bottom: 25px;
+}
+
+.lang-switch button {
+
+  padding: 10px 22px;
+
+  border: none;
+  border-radius: 30px;
+
+  background: rgba(255,255,255,0.7);
+
+  color: var(--chocolate-dark);
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s ease;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.lang-switch button:hover {
+
+  background: linear-gradient(
+    135deg,
+    var(--burnt-orange),
+    var(--soft-orange)
+  );
+
+  color: white;
+
+  transform: translateY(-2px);
+}
