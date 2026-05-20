@@ -62,6 +62,64 @@
 
   </div>
 
+  
+  <!-- RSVP -->
+  <div class="rsvp-section">
+
+    <h3 id="rsvp-title">RSVP</h3>
+    <p id="rsvp-subtitle">Please confirm your attendance</p>
+
+    <form onsubmit="sendRSVP(event)">
+      <input type="text" id="guestName" placeholder="Your Full Name" required>
+
+
+     <label id="q-attend" class="question">
+  Will you attend our wedding?
+</label>
+
+<div class="attendance-options">
+
+  <label class="option-card">
+
+        <label>
+          <input type="radio" name="attendance" value="Will attend" required>
+          <span id="opt-yes">Yes, I will attend</span>
+        </label>
+
+        <label>
+          <input type="radio" name="attendance" value="Will not attend">
+          <span id="opt-no">Sorry, I can’t attend</span>
+        </label>
+
+      </div>
+
+      <input type="number" id="guests" placeholder="Number of guests" min="1">
+
+      <textarea id="message" placeholder="Optional message"></textarea>
+
+      <button type="submit" id="send-btn">
+        Send RSVP via WhatsApp
+      </button>
+
+    </form>
+
+  </div>
+
+  <!-- RECEPTIONIST BUTTON -->
+  <button id="receptionBtn"
+          style="display:none;margin-top:25px;
+                 background:#2f6f4e;color:white;
+                 padding:15px;border-radius:30px;
+                 border:none;font-weight:bold;"
+          onclick="confirmEntry()">
+
+    ✅ Confirm Guest Entry
+
+  </button>
+
+</div>
+
+
   <!-- ✅ ONLY ADDED: PREMIUM RSVP / WISHES -->
   <div class="rsvp-section">
 
