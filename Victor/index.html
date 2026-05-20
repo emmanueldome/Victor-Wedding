@@ -14,19 +14,15 @@
 
 <div class="container">
 
-  <div class="top-decoration">❦</div>
-
-  <div class="container">
-
   <!-- LANGUAGE SWITCH -->
   <div class="lang-switch">
     <button type="button" onclick="setLang('en')">English</button>
     <button type="button" onclick="setLang('sw')">Swahili</button>
   </div>
 
+  <!-- TOP DECORATION -->
   <div class="top-decoration">❦</div>
 
-  
   <!-- HEADER -->
   <h1 id="site-title">Welcome to the Wedding of</h1>
 
@@ -45,72 +41,152 @@
        id="secretImage">
 
   <!-- DETAILS -->
-  <p id="date"><strong>Date:</strong> Sunday, 24 May 2026</p>
-  <p id="time"><strong>Time:</strong> 18:00 PM</p>
-  <p id="venue"><strong>Venue:</strong> Mwenge Social Hall, Dar es Salaam</p>
+  <div class="details-section">
 
-  <a href="https://maps.google.com/?q=Mwenge+Social+Hall" target="_blank">
-    📍 View Venue Location
+    <p id="date">
+      <strong>Date:</strong> Sunday, 24 May 2026
+    </p>
+
+    <p id="time">
+      <strong>Time:</strong> 18:00 PM
+    </p>
+
+    <p id="venue">
+      <strong>Venue:</strong> Mwenge Social Hall, Dar es Salaam
+    </p>
+
+  </div>
+
+  <!-- MAP BUTTON -->
+  <a href="https://maps.google.com/?q=Mwenge+Social+Hall"
+     target="_blank"
+     class="venue-btn">
+
+     📍 View Venue Location
+
   </a>
 
   <!-- COUNTDOWN -->
   <div class="countdown-container">
+
     <h3>Countdown to Our Wedding</h3>
 
     <div id="countdown">
-      <div class="countdown-box"><span id="days">00</span><small>Days</small></div>
-      <div class="countdown-box"><span id="hours">00</span><small>Hours</small></div>
-      <div class="countdown-box"><span id="minutes">00</span><small>Minutes</small></div>
-      <div class="countdown-box"><span id="seconds">00</span><small>Seconds</small></div>
+
+      <div class="countdown-box">
+        <span id="days">00</span>
+        <small>Days</small>
+      </div>
+
+      <div class="countdown-box">
+        <span id="hours">00</span>
+        <small>Hours</small>
+      </div>
+
+      <div class="countdown-box">
+        <span id="minutes">00</span>
+        <small>Minutes</small>
+      </div>
+
+      <div class="countdown-box">
+        <span id="seconds">00</span>
+        <small>Seconds</small>
+      </div>
+
     </div>
+
   </div>
 
-  <!-- ================= RSVP SECTION ================= -->
+  <!-- RSVP SECTION -->
   <div class="rsvp-section">
 
     <h3 id="rsvp-title">RSVP</h3>
-    <p id="rsvp-subtitle">Please confirm your attendance</p>
+
+    <p id="rsvp-subtitle">
+      Please confirm your attendance
+    </p>
 
     <form onsubmit="sendRSVP(event)">
 
-      <input type="text" id="rsvpName" placeholder="Your Full Name" required>
+      <input type="text"
+             id="rsvpName"
+             placeholder="Your Full Name"
+             required>
 
-      <label class="question">Will you attend our wedding?</label>
+      <label class="question" id="attendance-question">
+        Will you attend our wedding?
+      </label>
 
       <div class="attendance-options">
 
-        <label>
-          <input type="radio" name="attendance" value="Will attend" required>
-          Yes, I will attend
+        <label class="option-card">
+
+          <input type="radio"
+                 name="attendance"
+                 value="Will attend"
+                 required>
+
+          <span id="attend-yes">
+            Yes, I will attend
+          </span>
+
         </label>
 
-        <label>
-          <input type="radio" name="attendance" value="Will not attend">
-          Sorry, I can’t attend
+        <label class="option-card">
+
+          <input type="radio"
+                 name="attendance"
+                 value="Will not attend">
+
+          <span id="attend-no">
+            Sorry, I can’t attend
+          </span>
+
         </label>
 
       </div>
 
-      <input type="number" id="rsvpGuests" placeholder="Number of guests" min="1">
+      <input type="number"
+             id="rsvpGuests"
+             placeholder="Number of guests"
+             min="1">
 
-      <button type="submit">Send RSVP via WhatsApp</button>
+      <textarea id="rsvpMessage"
+                placeholder="Optional message"></textarea>
+
+      <button type="submit" id="rsvp-btn">
+        Send RSVP via WhatsApp
+      </button>
 
     </form>
+
   </div>
 
-  <!-- ================= WISHES SECTION ================= -->
+  <!-- WISHES SECTION -->
   <div class="rsvp-section">
 
-    <h3 id="wish-title">Send Your Wedding Wishes</h3>
-    <p id="wish-subtitle">Share your blessings to the couple</p>
+    <h3 id="wish-title">
+      Send Your Wedding Wishes
+    </h3>
+
+    <p id="wish-subtitle">
+      Share your blessings to the couple
+    </p>
 
     <form onsubmit="sendWish(event)">
 
-      <input type="text" id="wishName" placeholder="Your Full Name" required>
+      <input type="text"
+             id="wishName"
+             placeholder="Your Full Name"
+             required>
 
-      <textarea id="wishMessage" placeholder="Write your wedding wishes..." required></textarea>
+      <textarea id="wishMessage"
+                placeholder="Write your wedding wishes..."
+                required></textarea>
 
-      <button type="submit">Send Wishes 💌</button>
+      <button type="submit" id="wish-btn">
+        Send Wishes 💌
+      </button>
 
     </form>
 
@@ -121,35 +197,79 @@
 <script>
 
 /* ================= COUNTDOWN ================= */
-const weddingDate = new Date("May 24, 2026 18:00:00").getTime();
+
+const weddingDate =
+  new Date("May 24, 2026 18:00:00").getTime();
 
 setInterval(() => {
+
   const now = new Date().getTime();
   const d = weddingDate - now;
 
-  if (d <= 0) return;
+  if(d <= 0) return;
 
-  document.getElementById("days").textContent = Math.floor(d / (1000*60*60*24));
-  document.getElementById("hours").textContent = Math.floor((d / (1000*60*60)) % 24);
-  document.getElementById("minutes").textContent = Math.floor((d / (1000*60)) % 60);
-  document.getElementById("seconds").textContent = Math.floor((d / 1000) % 60);
+  document.getElementById("days").textContent =
+    Math.floor(d / (1000 * 60 * 60 * 24));
+
+  document.getElementById("hours").textContent =
+    Math.floor((d / (1000 * 60 * 60)) % 24);
+
+  document.getElementById("minutes").textContent =
+    Math.floor((d / (1000 * 60)) % 60);
+
+  document.getElementById("seconds").textContent =
+    Math.floor((d / 1000) % 60);
 
 }, 1000);
 
 
-/* ================= LANGUAGE ================= */
+/* ================= LANGUAGE SWITCH ================= */
+
 function setLang(lang){
 
   if(lang === "sw"){
 
     document.getElementById("site-title").innerText =
-      "Karibu kwenye Harusi ya";
+      "Karibu Kwenye Harusi ya";
+
+    document.getElementById("date").innerHTML =
+      "<strong>Tarehe:</strong> Jumapili, 24 Mei 2026";
+
+    document.getElementById("time").innerHTML =
+      "<strong>Saa:</strong> 18:00 Jioni";
+
+    document.getElementById("venue").innerHTML =
+      "<strong>Ukumbi:</strong> Mwenge Social Hall, Dar es Salaam";
+
+    document.querySelector(".venue-btn").innerHTML =
+      "📍 Angalia Eneo la Ukumbi";
 
     document.getElementById("rsvp-title").innerText =
-      "Thibitisha Mahudhurio yako";
+      "Thibitisha Mahudhurio";
 
     document.getElementById("rsvp-subtitle").innerText =
       "Tafadhali thibitisha uwepo wako";
+
+    document.getElementById("attendance-question").innerText =
+      "Je, utahudhuria harusi yetu?";
+
+    document.getElementById("attend-yes").innerText =
+      "Ndio, nitahudhuria";
+
+    document.getElementById("attend-no").innerText =
+      "Samahani, sitaweza kuhudhuria";
+
+    document.getElementById("rsvpName").placeholder =
+      "Jina lako kamili";
+
+    document.getElementById("rsvpGuests").placeholder =
+      "Idadi ya wageni";
+
+    document.getElementById("rsvpMessage").placeholder =
+      "Ujumbe wa ziada (si lazima)";
+
+    document.getElementById("rsvp-btn").innerText =
+      "Tuma RSVP kwa WhatsApp";
 
     document.getElementById("wish-title").innerText =
       "Tuma Neno la Baraka kwa Maharusi";
@@ -157,15 +277,27 @@ function setLang(lang){
     document.getElementById("wish-subtitle").innerText =
       "Shiriki baraka zako kwa wapenzi hawa";
 
-    document.getElementById("rsvpName").placeholder = "Jina lako kamili";
-    document.getElementById("wishName").placeholder = "Jina lako kamili";
-    document.getElementById("wishMessage").placeholder = "Andika baraka zako...";
+    document.getElementById("wishName").placeholder =
+      "Jina lako kamili";
 
-  } else {
-    location.reload();
+    document.getElementById("wishMessage").placeholder =
+      "Andika ujumbe wako wa baraka...";
+
+    document.getElementById("wish-btn").innerText =
+      "Tuma Baraka 💌";
+
   }
+
+  else {
+
+    location.reload();
+
+  }
+
 }
 
+
+/* ================= RSVP ================= */
 
 function sendRSVP(e){
 
@@ -205,6 +337,35 @@ function sendRSVP(e){
 Name: ${name}
 Attendance: ${attend}
 Guests: ${guests}
+
+Message:
+${msg}`;
+
+  const whatsappURL =
+    "https://wa.me/255783532235?text=" +
+    encodeURIComponent(text);
+
+  window.open(whatsappURL, "_blank");
+
+}
+
+
+/* ================= WISHES ================= */
+
+function sendWish(e){
+
+  e.preventDefault();
+
+  const name =
+    document.getElementById("wishName").value;
+
+  const msg =
+    document.getElementById("wishMessage").value;
+
+  const text =
+`💌 WEDDING WISHES
+
+Name: ${name}
 
 Message:
 ${msg}`;
