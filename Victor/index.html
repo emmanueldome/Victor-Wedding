@@ -88,8 +88,6 @@
 
       <input type="number" id="rsvpGuests" placeholder="Number of guests" min="1">
 
-      <textarea id="rsvpMessage" placeholder="Optional message"></textarea>
-
       <button type="submit">Send RSVP via WhatsApp</button>
 
     </form>
@@ -140,10 +138,10 @@ function setLang(lang){
   if(lang === "sw"){
 
     document.getElementById("site-title").innerText =
-      "Karibu kwenye Harusi ya Wapenzi";
+      "Karibu kwenye Harusi ya";
 
     document.getElementById("rsvp-title").innerText =
-      "Thibitisha Hudhurio";
+      "Thibitisha Mahudhurio yako";
 
     document.getElementById("rsvp-subtitle").innerText =
       "Tafadhali thibitisha uwepo wako";
@@ -155,7 +153,6 @@ function setLang(lang){
       "Shiriki baraka zako kwa wapenzi hawa";
 
     document.getElementById("rsvpName").placeholder = "Jina lako kamili";
-    document.getElementById("rsvpMessage").placeholder = "Ujumbe wako...";
     document.getElementById("wishName").placeholder = "Jina lako kamili";
     document.getElementById("wishMessage").placeholder = "Andika baraka zako...";
 
