@@ -50,7 +50,6 @@
 
   <!-- COUNTDOWN -->
   <div class="countdown-container">
-
     <h3>Countdown to Our Wedding</h3>
 
     <div id="countdown">
@@ -59,91 +58,60 @@
       <div class="countdown-box"><span id="minutes">00</span><small>Minutes</small></div>
       <div class="countdown-box"><span id="seconds">00</span><small>Seconds</small></div>
     </div>
-
   </div>
 
-  
-  <!-- RSVP -->
+  <!-- ================= RSVP SECTION ================= -->
   <div class="rsvp-section">
 
     <h3 id="rsvp-title">RSVP</h3>
     <p id="rsvp-subtitle">Please confirm your attendance</p>
 
     <form onsubmit="sendRSVP(event)">
-      <input type="text" id="guestName" placeholder="Your Full Name" required>
 
+      <input type="text" id="rsvpName" placeholder="Your Full Name" required>
 
-     <label id="q-attend" class="question">
-  Will you attend our wedding?
-</label>
+      <label class="question">Will you attend our wedding?</label>
 
-<div class="attendance-options">
-
-  <label class="option-card">
+      <div class="attendance-options">
 
         <label>
           <input type="radio" name="attendance" value="Will attend" required>
-          <span id="opt-yes">Yes, I will attend</span>
+          Yes, I will attend
         </label>
 
         <label>
           <input type="radio" name="attendance" value="Will not attend">
-          <span id="opt-no">Sorry, I can’t attend</span>
+          Sorry, I can’t attend
         </label>
 
       </div>
 
-      <input type="number" id="guests" placeholder="Number of guests" min="1">
+      <input type="number" id="rsvpGuests" placeholder="Number of guests" min="1">
 
-      <textarea id="message" placeholder="Optional message"></textarea>
+      <textarea id="rsvpMessage" placeholder="Optional message"></textarea>
 
-      <button type="submit" id="send-btn">
-        Send RSVP via WhatsApp
-      </button>
+      <button type="submit">Send RSVP via WhatsApp</button>
 
     </form>
-
   </div>
 
-  <!-- RECEPTIONIST BUTTON -->
-  <button id="receptionBtn"
-          style="display:none;margin-top:25px;
-                 background:#2f6f4e;color:white;
-                 padding:15px;border-radius:30px;
-                 border:none;font-weight:bold;"
-          onclick="confirmEntry()">
-
-    ✅ Confirm Guest Entry
-
-  </button>
-
-</div>
-
-
-  <!-- ✅ ONLY ADDED: PREMIUM RSVP / WISHES -->
+  <!-- ================= WISHES SECTION ================= -->
   <div class="rsvp-section">
 
     <h3 id="wish-title">Send Your Wedding Wishes</h3>
-
     <p id="wish-subtitle">Share your blessings to the couple</p>
 
     <form onsubmit="sendWish(event)">
 
-      <input type="text"
-             id="guestName"
-             placeholder="Your Full Name"
-             required>
+      <input type="text" id="wishName" placeholder="Your Full Name" required>
 
-      <textarea id="message"
-                placeholder="Write your wedding wishes..."
-                required></textarea>
+      <textarea id="wishMessage" placeholder="Write your wedding wishes..." required></textarea>
 
       <button type="submit">Send Wishes 💌</button>
 
     </form>
 
   </div>
-  <!-- END RSVP -->
 
 </div>
 
@@ -153,28 +121,20 @@
 const weddingDate = new Date("May 24, 2026 18:00:00").getTime();
 
 setInterval(() => {
-
   const now = new Date().getTime();
   const d = weddingDate - now;
 
   if (d <= 0) return;
 
-  document.getElementById("days").textContent =
-    Math.floor(d / (1000*60*60*24));
-
-  document.getElementById("hours").textContent =
-    Math.floor((d / (1000*60*60)) % 24);
-
-  document.getElementById("minutes").textContent =
-    Math.floor((d / (1000*60)) % 60);
-
-  document.getElementById("seconds").textContent =
-    Math.floor((d / 1000) % 60);
+  document.getElementById("days").textContent = Math.floor(d / (1000*60*60*24));
+  document.getElementById("hours").textContent = Math.floor((d / (1000*60*60)) % 24);
+  document.getElementById("minutes").textContent = Math.floor((d / (1000*60)) % 60);
+  document.getElementById("seconds").textContent = Math.floor((d / 1000) % 60);
 
 }, 1000);
 
 
-/* ================= LANGUAGE SWITCH ================= */
+/* ================= LANGUAGE ================= */
 function setLang(lang){
 
   if(lang === "sw"){
@@ -182,17 +142,11 @@ function setLang(lang){
     document.getElementById("site-title").innerText =
       "Karibu kwenye Harusi ya Wapenzi";
 
-    document.getElementById("couple-names").innerHTML =
-      "<span class='couple-name-style'>Victor ♥ Laurencia</span>";
+    document.getElementById("rsvp-title").innerText =
+      "Thibitisha Hudhurio";
 
-    document.getElementById("date").innerHTML =
-      "<strong>Tarehe:</strong> Jumapili, 24 Mei 2026";
-
-    document.getElementById("time").innerHTML =
-      "<strong>Saa:</strong> 18:00 Jioni";
-
-    document.getElementById("venue").innerHTML =
-      "<strong>Ukumbi:</strong> Mwenge Social Hall, Dar es Salaam";
+    document.getElementById("rsvp-subtitle").innerText =
+      "Tafadhali thibitisha uwepo wako";
 
     document.getElementById("wish-title").innerText =
       "Tuma Neno la Baraka kwa Maharusi";
@@ -200,60 +154,42 @@ function setLang(lang){
     document.getElementById("wish-subtitle").innerText =
       "Shiriki baraka zako kwa wapenzi hawa";
 
-    document.getElementById("guestName").placeholder =
-      "Jina lako kamili";
-
-    document.getElementById("message").placeholder =
-      "Andika ujumbe wako wa baraka...";
+    document.getElementById("rsvpName").placeholder = "Jina lako kamili";
+    document.getElementById("rsvpMessage").placeholder = "Ujumbe wako...";
+    document.getElementById("wishName").placeholder = "Jina lako kamili";
+    document.getElementById("wishMessage").placeholder = "Andika baraka zako...";
 
   } else {
     location.reload();
   }
 }
 
-  /* ================= RSVP ================= */
 
+/* ================= RSVP SEND ================= */
 function sendRSVP(e){
   e.preventDefault();
 
-  const name = document.getElementById("guestName").value.trim();
+  const name = document.getElementById("rsvpName").value;
   const attend = document.querySelector('input[name="attendance"]:checked').value;
-  const g = guests.value || "Not specified";
-  const m = message.value || "-";
+  const guests = document.getElementById("rsvpGuests").value || "-";
+  const msg = document.getElementById("rsvpMessage").value || "-";
 
-  if(name === ""){
-    alert("Please enter your name");
-    return;
-  }
+  const text = `💍 RSVP\nName: ${name}\nAttendance: ${attend}\nGuests: ${guests}\nMessage: ${msg}`;
 
-  const txt = `WEDDING RSVP 💍
-Name: ${name}
-Attendance: ${attend}
-Guests: ${g}
-Message: ${m}`;
-
-  window.open(
-    `https://wa.me/255783532235?text=${encodeURIComponent(txt)}`,
-    "_blank"
-  );
+  window.open("https://wa.me/255783532235?text=" + encodeURIComponent(text), "_blank");
 }
 
-/* ================= SEND WISH ================= */
+
+/* ================= WISH SEND ================= */
 function sendWish(e){
   e.preventDefault();
 
-  const name = document.getElementById("guestName").value;
-  const msg = document.getElementById("message").value;
+  const name = document.getElementById("wishName").value;
+  const msg = document.getElementById("wishMessage").value;
 
-  const txt =
-`💍 WEDDING WISH
-Name: ${name}
-Message: ${msg}`;
+  const text = `💍 WEDDING WISH\nName: ${name}\nMessage: ${msg}`;
 
-  window.open(
-    "https://wa.me/255783532235?text=" + encodeURIComponent(txt),
-    "_blank"
-  );
+  window.open("https://wa.me/255783532235?text=" + encodeURIComponent(text), "_blank");
 }
 
 </script>
