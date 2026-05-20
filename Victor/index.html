@@ -151,9 +151,6 @@
              placeholder="Number of guests"
              min="1">
 
-      <textarea id="rsvpMessage"
-                placeholder="Optional message"></textarea>
-
       <button type="submit" id="rsvp-btn">
         Send RSVP via WhatsApp
       </button>
@@ -297,8 +294,6 @@ function setLang(lang){
 }
 
 
-/* ================= RSVP ================= */
-
 function sendRSVP(e){
 
   e.preventDefault();
@@ -312,21 +307,14 @@ function sendRSVP(e){
   const guests =
     document.getElementById("rsvpGuests").value || "-";
 
-  const msg =
-    document.getElementById("rsvpMessage").value || "-";
-
-  if(name === ""){
-
+  if(name === "") {
     alert("Please enter your full name");
     return;
-
   }
 
-  if(!selected){
-
+  if(!selected) {
     alert("Please select attendance option");
     return;
-
   }
 
   const attend = selected.value;
@@ -336,19 +324,14 @@ function sendRSVP(e){
 
 Name: ${name}
 Attendance: ${attend}
-Guests: ${guests}
-
-Message:
-${msg}`;
+Guests: ${guests}`;
 
   const whatsappURL =
-    "https://wa.me/255783532235?text=" +
-    encodeURIComponent(text);
+    "https://wa.me/255783532235?text=" + encodeURIComponent(text);
 
-window.location.href = whatsappURL;
-
+  // more reliable than window.open on GitHub Pages
+  window.location.href = whatsappURL;
 }
-
 
 /* ================= WISHES ================= */
 
