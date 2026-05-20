@@ -167,31 +167,54 @@ function setLang(lang){
 }
 
 
-/* ================= RSVP SEND ================= */
 function sendRSVP(e){
+
   e.preventDefault();
 
-  const name = document.getElementById("rsvpName").value;
-  const attend = document.querySelector('input[name="attendance"]:checked').value;
-  const guests = document.getElementById("rsvpGuests").value || "-";
-  const msg = document.getElementById("rsvpMessage").value || "-";
+  const name =
+    document.getElementById("rsvpName").value.trim();
 
-  const text = `💍 RSVP\nName: ${name}\nAttendance: ${attend}\nGuests: ${guests}\nMessage: ${msg}`;
+  const selected =
+    document.querySelector('input[name="attendance"]:checked');
 
-  window.open("https://wa.me/255783532235?text=" + encodeURIComponent(text), "_blank");
-}
+  const guests =
+    document.getElementById("rsvpGuests").value || "-";
 
+  const msg =
+    document.getElementById("rsvpMessage").value || "-";
 
-/* ================= WISH SEND ================= */
-function sendWish(e){
-  e.preventDefault();
+  if(name === ""){
 
-  const name = document.getElementById("wishName").value;
-  const msg = document.getElementById("wishMessage").value;
+    alert("Please enter your full name");
+    return;
 
-  const text = `💍 WEDDING WISH\nName: ${name}\nMessage: ${msg}`;
+  }
 
-  window.open("https://wa.me/255783532235?text=" + encodeURIComponent(text), "_blank");
+  if(!selected){
+
+    alert("Please select attendance option");
+    return;
+
+  }
+
+  const attend = selected.value;
+
+  const text =
+`💍 WEDDING RSVP
+
+Name: ${name}
+Attendance: ${attend}
+Guests: ${guests}
+
+Message:
+${msg}`;
+
+  const whatsappURL =
+    "https://wa.me/255783532235?text=" +
+    encodeURIComponent(text);
+
+  window.open(whatsappURL, "_blank");
+
 }
 
 </script>
