@@ -9,7 +9,6 @@
 
   --shadow-soft: rgba(0,0,0,0.12);
   --shadow-strong: rgba(0,0,0,0.25);
-
 }
 
 * {
@@ -184,11 +183,10 @@ a:hover {
   font-size: 0.7rem;
 }
 
-/* ================= RSVP (WISHES SECTION) ================= */
+/* ================= WISHES SECTION ================= */
 
 .rsvp-section {
   margin-top: 40px;
-
   padding: 30px;
 
   border-radius: 22px;
@@ -198,116 +196,21 @@ a:hover {
   box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* =======================
-   RSVP SECTION
-======================= */
-.rsvp-section {
-  margin-top: 42px;
-  padding: 30px;
-  background: linear-gradient(135deg, #f9faf8, #ffffff);
-  border-radius: 22px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
 .rsvp-section h3 {
-  color: var(--sage-green);
   font-size: 1.6rem;
+  color: var(--chocolate-dark);
   margin-bottom: 8px;
 }
 
-.rsvp-section p {
-  color: var(--dusty-blue);
-  margin-bottom: 20px;
-}
+/* ================= FORM ================= */
 
-/* =======================
-   RSVP FORM
-======================= */
-.rsvp-section form {
+form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.rsvp-section input,
-.rsvp-section textarea {
-  padding: 13px 16px;
-  border-radius: 14px;
-  border: 1px solid #ddd;
-  font-size: 1rem;
-  outline: none;
-  transition: 0.25s;
-}
-
-.rsvp-section input:focus,
-.rsvp-section textarea:focus {
-  border-color: var(--eucalyptus);
-  box-shadow: 0 0 0 2px rgba(174,183,163,0.25);
-}
-
-.rsvp-section textarea {
-  resize: none;
-  height: 90px;
-}
-
-/* =======================
-   RSVP OPTIONS
-======================= */
-.question {
-  font-weight: bold;
-  color: var(--sage-green);
-}
-
-.attendance-options {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.option-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 15px;
-  border-radius: 16px;
-  border: 1px solid #ddd;
-  cursor: pointer;
-  background: #fff;
-  transition: all 0.25s ease;
-}
-
-.option-card:hover {
-  border-color: var(--eucalyptus);
-  background: #f8f9f7;
-}
-
-.option-card input {
-  transform: scale(1.2);
-}
-
-/* =======================
-   RSVP SUBMIT BUTTON
-======================= */
-.rsvp-section button {
-  margin-top: 8px;
-  background: var(--eucalyptus);
-  color: white;
-  border: none;
-  padding: 15px;
-  border-radius: 35px;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-  transition: all 0.25s ease;
-}
-
-.rsvp-section button:hover {
-  background: var(--dusty-blue);
-  transform: translateY(-2px);
-}
-input,
-textarea {
+input, textarea {
   padding: 14px;
   border-radius: 14px;
 
@@ -331,7 +234,8 @@ textarea {
   resize: none;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
+
 button {
   padding: 15px;
 
