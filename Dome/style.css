@@ -402,3 +402,11 @@ color:green;
 line-height:1.8;
 
 }
+
+#receptionPanel{
+
+display:none;
+
+visibility:hidden;
+
+}
