@@ -513,11 +513,15 @@ localStorage.getItem(
 
 
 entries.push({
-
 guest: guest,
 time: time
-
 });
+
+document.getElementById(
+"entryStatus"
+).innerHTML=
+
+`Total Checked In: ${entries.length}`;
 
 
 localStorage.setItem(
