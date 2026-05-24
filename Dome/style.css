@@ -342,3 +342,63 @@ button:hover {
 
   transform: translateY(-2px);
 }
+/* =======================
+RECEPTION MODE
+======================= */
+
+#receptionPanel{
+
+margin-top:35px;
+
+padding:25px;
+
+border-radius:20px;
+
+background:linear-gradient(
+135deg,
+#fff7fb,
+#f8fff7
+);
+
+box-shadow:
+0 10px 20px rgba(
+0,0,0,0.1
+);
+
+}
+
+#receptionPanel h3{
+
+color:var(--sage-green);
+
+margin-bottom:10px;
+
+}
+
+#receptionPanel input{
+
+width:100%;
+
+padding:14px;
+
+border-radius:15px;
+
+border:1px solid #ddd;
+
+margin-bottom:15px;
+
+font-size:1rem;
+
+}
+
+#entryStatus{
+
+margin-top:20px;
+
+font-weight:bold;
+
+color:green;
+
+line-height:1.8;
+
+}
