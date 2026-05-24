@@ -212,6 +212,16 @@ onclick="confirmEntry()">
 <p id="entryStatus"></p>
 
 </div>
+  
+  <button
+type="button"
+onclick="showEntries()">
+
+📋 View Entries
+
+</button>
+
+<div id="savedEntries"></div>
 
 </div>
 
@@ -471,12 +481,10 @@ pressTimer
 
 function confirmEntry(){
 
-const guest=
-
+const guest =
 document.getElementById(
 "guestCheckName"
 ).value.trim();
-
 
 if(guest===""){
 
@@ -488,16 +496,37 @@ return;
 
 }
 
-
-const time=
+const time =
 new Date()
 .toLocaleTimeString();
 
 
+let entries = JSON.parse(
+localStorage.getItem(
+"guestEntries"
+)
+) || [];
+
+
+entries.push({
+
+guest: guest,
+time: time
+
+});
+
+
+localStorage.setItem(
+"guestEntries",
+JSON.stringify(entries)
+);
+
+
 document.getElementById(
 "entryStatus"
-).innerHTML=`
+).innerHTML=
 
+`
 ✅ Entry Confirmed<br><br>
 
 Guest:
@@ -508,25 +537,30 @@ Time:
 
 `;
 
+}
+  function showEntries(){
 
-/* optional send check-in to WhatsApp */
+const entries =
+JSON.parse(
+localStorage.getItem(
+"guestEntries"
+)
+) || [];
 
-const txt=
-`GUEST CHECK-IN ✅
+let html="";
 
-Guest: ${guest}
+entries.forEach((e,index)=>{
 
-Time: ${time}
+html +=
+`${index+1}.
+${e.guest}
+(${e.time})<br>`;
 
-Status: Allowed Entry`;
+});
 
-window.open(
-"https://wa.me/255792800846?text="
-+
-encodeURIComponent(txt),
-
-"_blank"
-);
+document.getElementById(
+"savedEntries"
+).innerHTML=html;
 
 }
 </script>
