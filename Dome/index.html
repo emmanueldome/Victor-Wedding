@@ -188,6 +188,40 @@
     </form>
 
   </div>
+  <!-- RECEPTION MODE -->
+
+<div id="receptionPanel" style="display:none;">
+
+<h3>Reception Mode</h3>
+
+<p>Confirm Guest Entry</p>
+
+<input
+type="text"
+id="guestCheckName"
+placeholder="Enter Guest Name">
+
+<button
+type="button"
+onclick="confirmEntry()">
+
+✅ Confirm Entry
+
+</button>
+
+<p id="entryStatus"></p>
+
+</div>
+  
+  <button
+type="button"
+onclick="showEntries()">
+
+📋 View Entries
+
+</button>
+
+<div id="savedEntries"></div>
 
 </div>
 
@@ -361,6 +395,174 @@ ${msg}`;
 
 }
 
+  /* ================= RECEPTION MODE ================= */
+
+let pressTimer;
+
+const img =
+document.getElementById(
+"secretImage"
+);
+
+const receptionPanel =
+document.getElementById(
+"receptionPanel"
+);
+
+
+img.addEventListener(
+"touchstart",
+startPress
+);
+
+img.addEventListener(
+"mousedown",
+startPress
+);
+
+img.addEventListener(
+"touchend",
+cancelPress
+);
+
+img.addEventListener(
+"mouseup",
+cancelPress
+);
+
+img.addEventListener(
+"mouseleave",
+cancelPress
+);
+
+
+function startPress(){
+
+pressTimer=setTimeout(()=>{
+
+const pin=
+prompt(
+"Enter Reception PIN:"
+);
+
+if(pin==="1999"){
+
+alert(
+"Reception Mode Activated ✅"
+);
+
+receptionPanel.style.display=
+"block";
+
+}
+else{
+
+alert(
+"Wrong PIN ❌"
+);
+
+}
+
+},3000);
+
+}
+
+
+function cancelPress(){
+
+clearTimeout(
+pressTimer
+);
+
+}
+
+
+/* ================= CONFIRM ENTRY ================= */
+
+function confirmEntry(){
+
+const guest =
+document.getElementById(
+"guestCheckName"
+).value.trim();
+
+if(guest===""){
+
+alert(
+"Please enter guest name"
+);
+
+return;
+
+}
+
+const time =
+new Date()
+.toLocaleTimeString();
+
+
+let entries = JSON.parse(
+localStorage.getItem(
+"guestEntries"
+)
+) || [];
+
+
+entries.push({
+
+guest: guest,
+time: time
+
+});
+
+
+localStorage.setItem(
+"guestEntries",
+JSON.stringify(entries)
+);
+
+
+document.getElementById(
+"entryStatus"
+).innerHTML=
+
+`
+✅ Entry Confirmed<br><br>
+
+Guest:
+<b>${guest}</b><br>
+
+Time:
+<b>${time}</b>
+
+`;
+
+}
+  function showEntries(){
+
+const entries =
+JSON.parse(
+localStorage.getItem(
+"guestEntries"
+)
+) || [];
+
+let html="";
+
+entries.forEach((e,index)=>{
+
+html +=
+`${index+1}.
+${e.guest}
+(${e.time})<br>`;
+
+});
+
+document.getElementById(
+"savedEntries"
+).innerHTML=html;
+
+}
 </script>
 
 </body>
