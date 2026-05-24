@@ -121,14 +121,41 @@ text-align:left;
 
 <body>
 
-<div class="container">
+<!-- PASSWORD SCREEN -->
+
+<div id="loginBox" class="container">
+
+<h1>Reception Access</h1>
+
+<p>Enter Reception Password</p>
+
+<input
+type="password"
+id="receptionPassword"
+placeholder="Password">
+
+<button onclick="loginReception()">
+
+🔓 Enter
+
+</button>
+
+</div>
+
+
+<!-- RECEPTION PANEL -->
+
+<div
+id="receptionPanel"
+class="container"
+style="display:none;">
 
 <h1>
 Wedding Reception
 </h1>
 
 <p>
-Confirm guest entry
+Confirm Guest Entry
 </p>
 
 <input
@@ -165,6 +192,37 @@ placeholder="Search guest name">
 
 
 <script>
+  
+  function loginReception(){
+
+const password =
+
+document.getElementById(
+"receptionPassword"
+).value;
+
+
+if(password==="VICLAU2026"){
+
+document.getElementById(
+"loginBox"
+).style.display="none";
+
+
+document.getElementById(
+"receptionPanel"
+).style.display="block";
+
+}
+else{
+
+alert(
+"Wrong password ❌"
+);
+
+}
+
+}
 
 function confirmEntry(){
 
