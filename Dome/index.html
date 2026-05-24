@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+content="width=device-width, initial-scale=1">
 
-<title>Wedding Reception Check-in</title>
+<title>Wedding Reception</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
 
@@ -18,7 +16,7 @@ body{
 
 font-family:'Playfair Display',serif;
 
-background:#f7f7f7;
+background:#f6f6f6;
 
 display:flex;
 
@@ -36,7 +34,7 @@ padding:20px;
 
 background:white;
 
-padding:35px;
+padding:30px;
 
 width:100%;
 
@@ -45,8 +43,8 @@ max-width:500px;
 border-radius:25px;
 
 box-shadow:
-0 10px 30px rgba(
-0,0,0,0.1
+0 10px 25px rgba(
+0,0,0,.1
 );
 
 text-align:center;
@@ -57,21 +55,13 @@ h1{
 
 color:#9CAF88;
 
-margin-bottom:10px;
-
-}
-
-p{
-
-color:#666;
-
 }
 
 input{
 
 width:100%;
 
-padding:15px;
+padding:14px;
 
 border-radius:15px;
 
@@ -87,9 +77,9 @@ button{
 
 width:100%;
 
-margin-top:15px;
-
 padding:15px;
+
+margin-top:15px;
 
 border:none;
 
@@ -111,21 +101,15 @@ color:white;
 
 }
 
-button:hover{
-
-opacity:0.9;
-
-}
-
 #results{
 
-margin-top:25px;
+margin-top:20px;
 
 padding:15px;
 
-border-radius:15px;
+background:#f7f7f7;
 
-background:#f8f8f8;
+border-radius:15px;
 
 text-align:left;
 
@@ -148,9 +132,18 @@ Confirm guest entry
 </p>
 
 <input
-type="text"
+list="guestList"
 id="guestName"
-placeholder="Enter Guest Name">
+placeholder="Search guest name">
+
+<datalist id="guestList">
+
+<option value="Mr & Mrs Godwin Msigwa">
+<option value="Mr Mwaisanila">
+<option value="Irene Masalu">
+
+</datalist>
+
 
 <button onclick="confirmEntry()">
 
@@ -158,11 +151,13 @@ placeholder="Enter Guest Name">
 
 </button>
 
+
 <button onclick="viewEntries()">
 
 📋 View Entries
 
 </button>
+
 
 <div id="results"></div>
 
@@ -195,7 +190,7 @@ JSON.parse(
 localStorage.getItem(
 "guestEntries"
 )
-) || [];
+)||[];
 
 
 const exists=
@@ -206,7 +201,6 @@ e.guest.toLowerCase()
 ===
 guest.toLowerCase()
 );
-
 
 if(exists){
 
@@ -219,17 +213,13 @@ return;
 }
 
 
-const time=
-
-new Date()
-.toLocaleTimeString();
-
-
 entries.push({
 
 guest:guest,
 
-time:time
+time:
+new Date()
+.toLocaleTimeString()
 
 });
 
@@ -243,12 +233,6 @@ entries
 )
 
 );
-
-
-document.getElementById(
-"guestName"
-).value="";
-
 
 alert(
 "Entry confirmed ✅"
@@ -270,11 +254,8 @@ localStorage.getItem(
 )||[];
 
 
-let html=`
-<h3>
-Checked-in Guests
-</h3>
-`;
+let html=
+"<h3>Checked Guests</h3>";
 
 entries.forEach(
 (e,index)=>{
@@ -283,6 +264,7 @@ html+=`
 
 ${index+1}.
 ${e.guest}
+
 (${e.time})
 
 <br><br>
@@ -292,15 +274,11 @@ ${e.guest}
 });
 
 
-html+=`
-
-<hr>
-
-<b>Total Guests:</b>
-
+html+=
+`<hr>
+<b>Total:
 ${entries.length}
-
-`;
+</b>`;
 
 
 document.getElementById(
